@@ -30,4 +30,39 @@ a) $P(C | p) = \frac{P(p | C)P(C)}{P(p)} = \frac{.98(.001)}{.00178} = .551$
 b) Given the likelihood of having cancer given a positive result is only around 1/2, I would suggest to the researchers that they either repeat the test multiple times on a subject (useful if test is cheap/fast) or find a way to reduce the chance of a positive result when the patient doesn't have cancer (given the current values, that will have a larger impact than increasing positive results if they do have cancer).
 
 
-# 2) 
+# 2)
+a) We will assume that we pick door 1, and that Monty will open door 2. The probability that the car is behind door 1 is 1/3. There are 3 possibilities for Monty opening door 2: 
+
+P1: P(Monty opens door 2 | Car behind door 1) = 1/2
+
+P2: P(Monty opens door 2 | Car behind door 2) = 0
+
+P3: P(Monty opens door 2 | Car behind door 3) = 1
+
+Thus, P(Monty opens door 2) = P(B) = $P1*1/3 + P2*1/3 + P3*1/3 = 1/6 + 1/3 = 1/2$
+
+Thus, P(Car behind door 1 | Monty opens door 2) = P(A|B) = $\frac{P(B|A)P(A)}{P(B)} = \frac{(1/2)(1/3)}{1/2} = 1/3$
+
+This means the probability of the car being behind door 1 (the original choice) is only 1/3, where as if we switch the probability is 2/3.
+
+b) 
+
+``` {r}
+set.seed(1337)
+n <- 10000
+no_switch <- 0
+switch <- 0
+for (i in 1:n) {
+  car <- sample(c(1, 2, 3), 1)
+  initial_guess <- 1
+  if (car == initial_guess) {
+    # If the car is the initial guess, just count that
+    no_switch <- no_switch + 1
+  } else {
+    switch <- switch + 1
+  }
+}
+
+```
+
+I ran a simulation with `r n` trials, which resulted in `r no_switch` success when NOT switching, and `r switch` successes when switching, roughly the same 1/3 vs. 2/3 ratio. 
