@@ -1,5 +1,33 @@
 ---
-title: "Untitled"
-format: PDF
+title: "HW1"
+author: "RJ Cass"
+execute:
+  echo: false
+format: 
+  pdf:
+    include-in-header:
+      text: |
+        \usepackage{caption}
+        \captionsetup{textfont={it}, font=small} 
+        \usepackage{amsmath}
+geometry: "margin=1in"
 ---
 
+# 1)
+
+Setup: 
+
+$P(p), P(n)$: Probability of positive/negative result
+
+$P(C) = .001, P(nC) = .999$ Probability of cancer/no cancer
+
+$P(p | C) = .98, P(n | nC) = .96 \implies P(n | C) = .02, P(p | nC) = .04$
+
+$P(p) = P(p|C)*P(C) + P(p|nC)*P(nC) = .98(.001)+.02(.04) = 0.00178$
+
+a) $P(C | p) = \frac{P(p | C)P(C)}{P(p)} = \frac{.98(.001)}{.00178} = .551$
+
+b) Given the likelihood of having cancer given a positive result is only around 1/2, I would suggest to the researchers that they either repeat the test multiple times on a subject (useful if test is cheap/fast) or find a way to reduce the chance of a positive result when the patient doesn't have cancer (given the current values, that will have a larger impact than increasing positive results if they do have cancer).
+
+
+# 2) 
