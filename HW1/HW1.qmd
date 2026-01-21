@@ -1,8 +1,8 @@
 ---
 title: "HW1"
+subtitle: "STAT 651"
 author: "RJ Cass"
-execute:
-  echo: false
+date: "16 Jan. 2026"
 format: 
   pdf:
     include-in-header:
@@ -23,15 +23,15 @@ $P(C) = .001, P(nC) = .999$ Probability of cancer/no cancer
 
 $P(p | C) = .98, P(n | nC) = .96 \implies P(n | C) = .02, P(p | nC) = .04$
 
-$P(p) = P(p|C)*P(C) + P(p|nC)*P(nC) = .98(.001)+.02(.04) = 0.00178$
+$P(p) = P(p|C)*P(C) + P(p|nC)*P(nC) = .98(.001)+.04(.999) = 0.04094$
 
 ### a) 
 
-$P(C | p) = \frac{P(p | C)P(C)}{P(p)} = \frac{.98(.001)}{.00178} = .551$
+$P(C | p) = \frac{P(p | C)P(C)}{P(p)} = \frac{.98(.001)}{0.04094} = .024$
 
 ### b) 
 
-Given the likelihood of having cancer given a positive result is only around 1/2, I would suggest to the researchers that they either repeat the test multiple times on a subject (useful if test is cheap/fast) or find a way to reduce the chance of a positive result when the patient doesn't have cancer (given the current values, that will have a larger impact than increasing positive results if they do have cancer).
+Given the likelihood of having cancer given a positive result is so low, I would suggest to the researchers that they either repeat the test multiple times on a subject (useful if test is cheap andfast) or find a way to reduce the chance of a positive result when the patient doesn't have cancer (given the current values, that will have a larger impact than increasing positive results if they do have cancer). Either way, I would advise them not to utilize the test as it currently is, as it is mostly likely going to cause panic in patients who actually have only a very small chance of actually having cancer. 
 
 
 # 2
@@ -151,7 +151,7 @@ calc_utility <- function(N, theta) {
     N*500
   } else {
     bad_N <- 101:N
-    prob_bad_N <- 1- mapply(pbinom, q = bad_N, size = N, prob = theta)
+    prob_bad_N <- mapply(dbinom, x = bad_N, size = N, prob = theta)
     loss <- sum((bad_N - 100) * 3000 * prob_bad_N)
     500 * N - loss
   }
@@ -163,7 +163,7 @@ cbind(N_list, utility)
 
 ### c) 
 
-Given a $\theta$ of .95, the optimal value of $N$ to maximize money made is 104 tickets.
+Given a $\theta$ of .95, the optimal value of $N$ to maximize money made is 103 tickets.
 
 ### d) 
 
@@ -240,3 +240,15 @@ cbind(N_list, above_target_prop)
 ```
 
 Based on this simulation, the airline can sell up to 105 tickets. 
+
+
+
+
+# Homework Statements
+
+### Estimate of Time Taken
+I estimate this homework took about 4 hours in total. 
+
+
+### Disclosure of Resources Used
+I used some online helps (Google, StackOverflow) for some help with debugging. I also used Wikipedia to verify my answer for the Beta-Binomial Distribution. Further collabed with a few classmates to verify answers for number 5. 
