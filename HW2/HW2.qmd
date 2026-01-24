@@ -1,0 +1,28 @@
+---
+title: "HW2"
+subtitle: "STAT 651"
+author: "RJ Cass"
+date: "26 Jan. 2026"
+format: 
+  pdf:
+    include-in-header:
+      text: |
+        \usepackage{caption}
+        \setlength{\parindent}{0pt}
+        \captionsetup{textfont={it}, font=small} 
+        \usepackage{amsmath}
+geometry: "margin=1in"
+---
+
+# 1: BDA3 2.10ab
+
+$\pi(N) = (.01)(.99)^{N-1}$ ($N>1, 2, 3...$)
+
+a) We see 203. What is the posterior for actual number of roadcars?
+
+Thinking about what the distirbution of $P(203|N)$, if there were 203 cars, $P(203|N) = 1/203$. If there were 204, it would be $1\204$, etc. For any $N$ less than 203 we coldn't have seen a 203, so it's 0. Thus:
+
+$P(203|N) = \frac{1}{N}$ for $N \ge 203$
+
+$P(N|203) \propto P(203|N)\pi(N) = \frac{1}{N}(.01)(.99)^{N-1} = \frac{1}{N}(.01)(.99)(.99)^{N} \propto \frac{1}{N}(.99)^{N}$
+
